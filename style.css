@@ -23,6 +23,28 @@ li {
     list-style: none;
 }
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #ed3124 #000000;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #ed3124;
+    border-radius: 3px;
+    border: 0px solid #000000;
+}
+
 .hidden {
     display: none;
 }
@@ -109,7 +131,8 @@ header nav ul li.on a {
     background: rgba(0, 0, 0, 0.6) linear-gradient(to right, transparent 0%, black 100%);
 }
 
-.right .thumb_info {
+/* .right  */
+.thumb_info {
     position: absolute;
     left: 0;
     bottom: 40px;
@@ -117,12 +140,13 @@ header nav ul li.on a {
     margin-right: 40px;
 }
 
-.thumb_info span {
+.movie_average {
+    margin-bottom: 0;
     font-size: 16px;
     font-weight: 500;
 }
 
-.thumb_info span span {
+.movie_average span {
     font-size: 14px;
     font-weight: normal;
     color: #eeeeee;
@@ -175,25 +199,31 @@ header nav ul li.on a {
     height: 100%;
 }
 
+.movie_card {
+    cursor: pointer;
+}
+
 .movie_card .img_wrap {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     border-radius: 5px;
     overflow: hidden;
 }
 
 .movie_card .img_wrap img {
     width: 100%;
-    height: 100%;
+    height: 342px;
 }
 .movie_card h4 {
-    font-weight: normal;
+    margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .movie_card h5 {
-    font-weight: normal;
     margin-top: 10px;
+    font-weight: normal;
     color: #aaa;
 }
 
@@ -202,12 +232,25 @@ header nav ul li.on a {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 342px;
     padding: 30px 20px;
     background-color: rgba(0, 0, 0, 0.92);
     box-sizing: border-box;
     transition: all 0.2s;
+    overflow-y: scroll;
+    /* opacity: 0; */
     display: none;
+    /* z-index를 무시하고 겹쳐있는 영역을 클릭했을때 뒤에 있는 click 이벤트 반응하게 하기 */
+    pointer-events: none;
+}
+.movie_info p {
+    line-height: 24px;
+    font-weight: 200;
+    line-height: 28px;
+}
+
+.movie_card:hover .movie_info {
+    display: block;
 }
 
 .movie_info .info_wrap {
@@ -246,15 +289,23 @@ header nav ul li.on a {
     font-size: 16px;
 }
 
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 main {
-    width: 1200px;
+    width: 1320px;
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
 }
 .search_bar {
     position: relative;
-    width: 600px;
+    width: 640px;
     height: 45px;
     margin: 0 auto;
 }
@@ -275,7 +326,7 @@ main {
 }
 
 .all_movies {
-    width: 1020px;
+    width: 1280px;
     margin: 100px auto 0;
 }
 .all_movies h3 {
@@ -286,7 +337,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    width: 1020px;
+    width: 1280px;
     padding: 0;
     margin-left: auto;
     margin-right: auto;
@@ -300,6 +351,7 @@ main {
 
 .all_movies > ul > li .movie_card {
     width: 100%;
+    height: 100%;
 }
 
 .recommended_movies {

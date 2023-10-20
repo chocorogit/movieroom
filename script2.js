@@ -1,35 +1,11 @@
-const apiKey = "c9edad1341c962f8480ff448a9795aef";
-const totalPages = 4; // 예를 들어 4 페이지까지 데이터를 가져오려면
-const url = `https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=${page}&api_key=${apiKey}`;
+const myArray = [10, 20, 30, 40, 50];
+const targetValue = 30;
 
-// 페이지별로 데이터를 가져와서 병합할 배열을 만듭니다.
-const fetchDataForPage = (page) => {
-    const url = `https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=${page}&api_key=${apiKey}`;
-    return fetch(url).then((response) => {
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-        return response.json();
-    });
-};
+const index = myArray.indexOf(targetValue);
+console.log(index);
 
-fetch(url).then(response.json());
-
-// 각 페이지의 데이터를 가져오고 병합합니다.
-const fetchAllData = async () => {
-    let allData = [];
-    for (let page = 1; page <= totalPages; page++) {
-        const data = await fetchDataForPage(page);
-        allData = allData.concat(data.results);
-    }
-    return allData;
-};
-
-fetchAllData()
-    .then((data) => {
-        data.forEach((movie) => {
-            const movieTitle = movie.title;
-            console.log(movieTitle);
-        });
-    })
-    .catch((err) => console.error(err));
+if (index !== -1) {
+    console.log(`값 ${targetValue}는 배열에서 인덱스 ${index}에 있습니다.`);
+} else {
+    console.log(`값 ${targetValue}는 배열에 존재하지 않습니다.`);
+}

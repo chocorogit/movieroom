@@ -15,6 +15,9 @@ const allMovieTitlesOrigin = allMovies.querySelectorAll(".movie_name_origin");
 const allMoviePosterImg = allMovies.querySelectorAll(".poster_img");
 const releaseDate = allMovies.querySelectorAll(".release_date");
 
+// 영화 제목 배열
+// 전역변수로 선언해야 함
+const movieTitles = [];
 // https://api.themoviedb.org/3/movie/top_rated?api_key={API_key}&language=en-US&page=1
 // 웹 브라우저에서 제공되는 JavaScript의 API
 // 네트워크 데이터를 비동기적으로 가져오고 보내는 데 사용
@@ -35,10 +38,7 @@ for (let page = 1; page <= totalPages; page++) {
             data.results.forEach((movie, index, poster) => {
                 // 영화 제목
                 const movieTitle = movie.title;
-                // 영화 제목 배열
-                const movieTitles = [];
                 movieTitles.push(movie.title);
-                console.log("movieTitles ", movieTitles);
                 // 영화 원래 제목
                 const originalTitle = movie.original_title;
                 // 이미지 경로
@@ -83,31 +83,35 @@ for (let page = 1; page <= totalPages; page++) {
                 );
                 releaseDate[index + (page - 1) * 20].innerHTML = `${releaseData} <span>개봉</span>`;
 
-                // 영화 검색
                 const searchForm = document.querySelector(".search_bar");
                 searchForm.addEventListener("submit", (event) => {
                     const searchInput = searchForm.querySelector("input"); // <input> 요소 선택
                     const inputValue = searchInput.value;
-                    const filteredMovies = [];
 
-                    movieTitles.forEach((title, index) => {
-                        console.log(title.includes(inputValue));
-                        if (title.includes(inputValue)) {
-                            console.log("index", index);
-                            filteredMovies.push(index);
-                        }
+                    if (inputValue.trim() === "") {
+                        // 입력 값이 없으면 아무 작업도 하지 않도록
+                        event.preventDefault();
+                        // 40번을 호출해서 문제!!!
+                        return alert("영화 제목을 입력해주세요!");
+                    }
+                    const filteredMovies = movieTitles.filter((title, index) => {
+                        // 입력한 값이 없는데 왜 true지
+                        // 빈 문자열이 다른 문자열에 포함되는지 확인하면 항상 true가 반환됩니다.
+                        // console.log(title.includes(inputValue));
+                        return title.includes(inputValue);
                     });
 
                     // 모든 영화 카드 숨기기
                     allMovieCard.forEach((card) => {
-                        card.style.display = "none";
+                        card.parentElement.style.display = "none";
                     });
 
                     // 필터링된 영화 카드만 보여주기
-                    filteredMovies.forEach((index) => {
-                        allMovieCard[index].style.display = "block";
+                    filteredMovies.forEach((title) => {
+                        const index = movieTitles.indexOf(title);
+                        allMovieCard[index].parentElement.style.display = "block";
                     });
-                    // console.log(inputValue);
+
                     event.preventDefault();
                 });
             });

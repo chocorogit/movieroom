@@ -51,6 +51,10 @@ header {
 
 header h1 {
     font-size: 16px;
+}
+
+header h1 a {
+    color: #ddd;
     font-weight: 600;
 }
 
@@ -69,6 +73,10 @@ header nav ul {
 header nav ul li {
     font-size: 20px;
     font-weight: 600;
+}
+
+header nav ul li a {
+    color: #aaa;
 }
 
 header nav ul li.on a {

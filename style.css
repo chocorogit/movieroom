@@ -305,24 +305,59 @@ main {
 }
 .search_bar {
     position: relative;
-    width: 640px;
+    width: 644px;
     height: 45px;
     margin: 0 auto;
+    transition: border 0.2s;
 }
+
+.search_bar::after {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    content: "";
+    width: 0;
+    height: 2px;
+    background: red;
+    /* border-color: #ed3124; */
+}
+
 .search_bar input {
     width: 100%;
     height: 40px;
+    padding-bottom: 18px;
     font-size: 20px;
     background-color: transparent;
     outline: none;
     border: none;
     border-bottom: 2px solid #ffffff;
+    box-sizing: border-box;
+}
+.search_bar input:focus {
+    /* border-color: #ed3124; */
+}
+
+.search_bar .underline {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    /* transform: translateX(-50%); */
+    height: 2px;
+    width: 0;
+    background-color: #ed3124;
+    transition: 0.5s;
+}
+
+.search_bar input:focus + .underline {
+    width: 100%;
 }
 
 .search_bar .btn_search {
     position: absolute;
-    top: 0;
+    top: -16px;
     right: 0;
+    padding: 14px;
+    cursor: pointer;
 }
 
 .all_movies {

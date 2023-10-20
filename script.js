@@ -35,6 +35,10 @@ for (let page = 1; page <= totalPages; page++) {
             data.results.forEach((movie, index, poster) => {
                 // 영화 제목
                 const movieTitle = movie.title;
+                // 영화 제목 배열
+                const movieTitles = [];
+                movieTitles.push(movie.title);
+                console.log("movieTitles ", movieTitles);
                 // 영화 원래 제목
                 const originalTitle = movie.original_title;
                 // 이미지 경로
@@ -49,6 +53,7 @@ for (let page = 1; page <= totalPages; page++) {
                 const releaseData = movie.release_date;
                 // id
                 const movieId = movie.id;
+                movieCards[index + (page - 1) * 20].setAttribute("id", movieId);
                 // 이미지 태그 생성
                 const posterElement = document.createElement("img");
                 // 줄거리 p 태그 생성
@@ -77,6 +82,34 @@ for (let page = 1; page <= totalPages; page++) {
                     allMovieTitles[index + (page - 1) * 20]
                 );
                 releaseDate[index + (page - 1) * 20].innerHTML = `${releaseData} <span>개봉</span>`;
+
+                // 영화 검색
+                const searchForm = document.querySelector(".search_bar");
+                searchForm.addEventListener("submit", (event) => {
+                    const searchInput = searchForm.querySelector("input"); // <input> 요소 선택
+                    const inputValue = searchInput.value;
+                    const filteredMovies = [];
+
+                    movieTitles.forEach((title, index) => {
+                        console.log(title.includes(inputValue));
+                        if (title.includes(inputValue)) {
+                            console.log("index", index);
+                            filteredMovies.push(index);
+                        }
+                    });
+
+                    // 모든 영화 카드 숨기기
+                    allMovieCard.forEach((card) => {
+                        card.style.display = "none";
+                    });
+
+                    // 필터링된 영화 카드만 보여주기
+                    filteredMovies.forEach((index) => {
+                        allMovieCard[index].style.display = "block";
+                    });
+                    // console.log(inputValue);
+                    event.preventDefault();
+                });
             });
         })
         .catch((err) => console.error(err));

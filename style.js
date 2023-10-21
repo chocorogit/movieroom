@@ -1,13 +1,13 @@
-const movieCards = document.querySelectorAll(".movie_card");
-const movieInfos = document.querySelectorAll(".movie_info");
+const imgWrap = document.querySelectorAll(".all_movies .img_wrap");
 
-movieCards.forEach((card, index) => {
-    card.addEventListener("mouseenter", () => {
-        movieInfos[index].style.display = "block";
+imgWrap.forEach((img, index) => {
+    img.addEventListener("mouseenter", () => {
+        const posterImgs = document.querySelectorAll(".all_movies .poster_img");
+        posterImgs[index].style.transform = "scale(1.1)";
     });
 
-    card.addEventListener("mouseleave", () => {
-        // movieInfos[index].classList.remove("show");
-        movieInfos[index].style.display = "none";
+    img.addEventListener("mouseleave", () => {
+        const posterImgs = document.querySelectorAll(".all_movies .poster_img");
+        posterImgs[index].style.transform = "scale(1.0)";
     });
 });

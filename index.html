@@ -9,13 +9,13 @@
     <body>
         <div class="container">
             <!-- header -->
-            <header>
+            <header id="header">
                 <h1><a href="#">MOVIEROOM</a></h1>
                 <nav>
                     <ul>
-                        <li class="nav_li on"><a href="#">홈</a></li>
-                        <li class="nav_li"><a href="#">영화 검색</a></li>
-                        <li class="nav_li"><a href="#">추천 영화</a></li>
+                        <li class="nav_li"><a class="on" href="#header">홈</a></li>
+                        <li class="nav_li"><a href="#search_bar">영화 검색</a></li>
+                        <li class="nav_li"><a href="#recommended_movies">추천 영화</a></li>
                     </ul>
                 </nav>
             </header>
@@ -36,8 +36,9 @@
                     <div class="left">
                         <div class="title_wrap">
                             <h3>영화 순위</h3>
-                            <div class="indicator">
-                                <a href="#">
+                            <div class="navigation">
+                                <button type="button" class="prev">
+                                    <span class="hidden">이전</span>
                                     <svg
                                         width="24"
                                         height="24"
@@ -49,8 +50,9 @@
                                             d="M609.408 149.376L277.76 489.6a32 32 0 0 0 0 44.672l331.648 340.352a29.12 29.12 0 0 0 41.728 0a30.592 30.592 0 0 0 0-42.752L339.264 511.936l311.872-319.872a30.592 30.592 0 0 0 0-42.688a29.12 29.12 0 0 0-41.728 0z"
                                         />
                                     </svg>
-                                </a>
-                                <a href="#">
+                                </button>
+                                <button type="button" class="start">
+                                    <span class="hidden">재생</span>
                                     <svg width="24" height="24" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             fill="#ffffff"
@@ -59,8 +61,9 @@
                                             clip-rule="evenodd"
                                         />
                                     </svg>
-                                </a>
-                                <a href="#">
+                                </button>
+                                <button type="button" class="next">
+                                    <span class="hidden">다음</span>
                                     <svg
                                         width="24"
                                         height="24"
@@ -72,12 +75,12 @@
                                             d="M340.864 149.312a30.592 30.592 0 0 0 0 42.752L652.736 512L340.864 831.872a30.592 30.592 0 0 0 0 42.752a29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"
                                         />
                                     </svg>
-                                </a>
+                                </button>
                             </div>
                         </div>
                         <div class="hot_movies">
-                            <ul>
-                                <li>
+                            <ul id="carousel" class="slider">
+                                <li class="slide">
                                     <div class="movie_card">
                                         <div class="img_wrap">
                                             <img class="poster_img" src="img/movie1.jpg" alt="movie1 이미지" />
@@ -109,7 +112,7 @@
                                         <!-- <button type="button">상세 보기</button> -->
                                     </div>
                                 </li>
-                                <li>
+                                <li class="slide">
                                     <div class="movie_card">
                                         <div class="img_wrap">
                                             <img class="poster_img" src="img/movie2.jpg" alt="movie2 이미지" />
@@ -139,7 +142,99 @@
                                         <!-- <button type="button">상세 보기</button> -->
                                     </div>
                                 </li>
-                                <li>
+                                <li class="slide">
+                                    <div class="movie_card">
+                                        <div class="img_wrap">
+                                            <img class="poster_img" src="img/movie3.jpg" alt="movie3 이미지" />
+                                        </div>
+                                        <h4 class="movie_name">플라워 킬링 문</h4>
+                                        <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
+                                    </div>
+                                    <div class="movie_info">
+                                        <div class="info_wrap">
+                                            <span class="release_date">2023.10.03 개봉</span>
+                                            <!-- <span class="running_time">119분</span> -->
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <p class="country">국가</p>
+                                                한국
+                                            </li>
+                                            <li>
+                                                <p class="rating">등급</p>
+                                                12세이상관람가
+                                            </li>
+                                            <li>
+                                                <p class="genre">장르</p>
+                                                코미디
+                                            </li>
+                                        </ul>
+                                        <!-- <button type="button">상세 보기</button> -->
+                                    </div>
+                                </li>
+                                <li class="slide">
+                                    <div class="movie_card">
+                                        <div class="img_wrap">
+                                            <img class="poster_img" src="img/movie1.jpg" alt="movie1 이미지" />
+                                        </div>
+                                        <h4 class="movie_name">그대들은 어떻게 살 것인가</h4>
+                                        <h5 class="movie_name_origin">
+                                            The Boy and the Heron, <br />君たちはどう生きるか, 2023
+                                        </h5>
+                                    </div>
+                                    <div class="movie_info">
+                                        <div class="info_wrap">
+                                            <span class="release_date">2023.10.25 개봉</span>
+                                            <span class="running_time">123분</span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <p class="country">국가</p>
+                                                일본
+                                            </li>
+                                            <li>
+                                                <p class="rating">등급</p>
+                                                전체관람가
+                                            </li>
+                                            <li>
+                                                <p class="genre">장르</p>
+                                                애니메이션/어드벤처/판타지/드라마
+                                            </li>
+                                        </ul>
+                                        <!-- <button type="button">상세 보기</button> -->
+                                    </div>
+                                </li>
+                                <li class="slide">
+                                    <div class="movie_card">
+                                        <div class="img_wrap">
+                                            <img class="poster_img" src="img/movie2.jpg" alt="movie2 이미지" />
+                                        </div>
+                                        <h4 class="movie_name">30일</h4>
+                                        <h5 class="movie_name_origin">Love Reset, 2023</h5>
+                                    </div>
+                                    <div class="movie_info">
+                                        <div class="info_wrap">
+                                            <span class="release_date">2023.10.03 개봉</span>
+                                            <!-- <span class="running_time">119분</span> -->
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <p class="country">국가</p>
+                                                한국
+                                            </li>
+                                            <li>
+                                                <p class="rating">등급</p>
+                                                12세이상관람가
+                                            </li>
+                                            <li>
+                                                <p class="genre">장르</p>
+                                                코미디
+                                            </li>
+                                        </ul>
+                                        <!-- <button type="button">상세 보기</button> -->
+                                    </div>
+                                </li>
+                                <li class="slide">
                                     <div class="movie_card">
                                         <div class="img_wrap">
                                             <img class="poster_img" src="img/movie3.jpg" alt="movie3 이미지" />
@@ -177,7 +272,7 @@
             <!-- main -->
             <main>
                 <!-- search_bar -->
-                <form class="search_bar">
+                <form id="search_bar" class="search_bar">
                     <input type="text" title="영화 검색창" placeholder="찾고 싶은 영화 제목을 검색해 보세요!" />
                     <span class="underline"></span>
                     <label class="hidden">영화 검색창</label>
@@ -192,8 +287,8 @@
                     </button>
                 </form>
 
-                <div class="all_movies">
-                    <h3>전체 영화</h3>
+                <div id="all_movies" class="all_movies">
+                    <h3>최고 평점 영화</h3>
                     <ul>
                         <li>
                             <div class="movie_card">
@@ -203,11 +298,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -215,11 +306,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -227,11 +314,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -241,11 +324,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -253,11 +332,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -265,11 +340,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -279,11 +350,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -291,11 +358,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -303,11 +366,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -317,11 +376,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -331,11 +386,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -343,11 +394,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -355,11 +402,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -369,11 +412,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -381,11 +420,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -393,11 +428,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -407,11 +438,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -419,11 +446,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -431,11 +454,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -445,11 +464,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -459,11 +474,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -471,11 +482,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -483,11 +490,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -497,11 +500,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -509,11 +508,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -521,11 +516,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -535,11 +526,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -547,11 +534,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -559,11 +542,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -573,11 +552,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -587,11 +562,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -599,11 +570,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -611,11 +578,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -625,11 +588,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -637,11 +596,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -649,11 +604,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -663,11 +614,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -675,11 +622,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -687,11 +630,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -701,15 +640,11 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                     </ul>
                 </div>
-                <div class="recommended_movies">
+                <div id="recommended_movies" class="recommended_movies">
                     <h3>추천 영화</h3>
                     <ul>
                         <li>
@@ -720,11 +655,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -732,11 +663,7 @@
                                 <h4 class="movie_name">30일</h4>
                                 <h5 class="movie_name_origin">Love Reset, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -744,11 +671,7 @@
                                 <h4 class="movie_name">플라워 킬링 문</h4>
                                 <h5 class="movie_name_origin">Killers of the Flower Moon, 2023</h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.03 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                         <li>
                             <div class="movie_card">
@@ -758,11 +681,7 @@
                                     The Boy and the Heron, <br />君たちはどう生きるか, 2023
                                 </h5>
                             </div>
-                            <div class="movie_info">
-                                <div class="info_wrap">
-                                    <span class="release_date">2023.10.25 개봉</span>
-                                </div>
-                            </div>
+                            <div class="movie_info"></div>
                         </li>
                     </ul>
                 </div>
@@ -771,8 +690,19 @@
             <footer>
                 <p>© Copyright 2023 movieroom</p>
             </footer>
+            <button id="scrollToTop">
+                <span class="hidden">맨 위로 이동</span>
+                <svg width="24" height="24" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        fill="#ffffff"
+                        d="m488.832 344.32l-339.84 356.672a32 32 0 0 0 0 44.16l.384.384a29.44 29.44 0 0 0 42.688 0l320-335.872l319.872 335.872a29.44 29.44 0 0 0 42.688 0l.384-.384a32 32 0 0 0 0-44.16L535.168 344.32a32 32 0 0 0-46.336 0z"
+                    />
+                </svg>
+            </button>
         </div>
         <script src="script.js"></script>
         <script src="style.js"></script>
+        <script src="slider.js"></script>
+        <script src="scrollTo.js"></script>
     </body>
 </html>

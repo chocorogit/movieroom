@@ -50,10 +50,10 @@ for (let page = 1; page <= totalPages; page++) {
                 // 평점
                 const average = movie.vote_average;
                 // 개봉일
-                const releaseData = movie.release_date;
+                // const releaseData = movie.release_date;
                 // id
                 const movieId = movie.id;
-                movieCards[index + (page - 1) * 20].setAttribute("id", movieId);
+                allMovieCard[index + (page - 1) * 20].setAttribute("id", movieId);
                 // 이미지 태그 생성
                 const posterElement = document.createElement("img");
                 // 줄거리 p 태그 생성
@@ -65,9 +65,7 @@ for (let page = 1; page <= totalPages; page++) {
 
                 posterElement.classList.add("poster_img");
                 posterElement.src = posterUrl;
-                overviewElement.innerHTML = movie.overview
-                    ? `<p>내용</p>${overview}`
-                    : `<p>내용</p> 내용 요약이 없습니다.`;
+                overviewElement.innerHTML = movie.overview ? `${overview}` : ` 내용 요약이 없습니다.`;
 
                 // console.log(releaseDate);
 
@@ -81,44 +79,48 @@ for (let page = 1; page <= totalPages; page++) {
                     averageElement,
                     allMovieTitles[index + (page - 1) * 20]
                 );
-                releaseDate[index + (page - 1) * 20].innerHTML = `${releaseData} <span>개봉</span>`;
-
-                const searchForm = document.querySelector(".search_bar");
-                searchForm.addEventListener("submit", (event) => {
-                    const searchInput = searchForm.querySelector("input"); // <input> 요소 선택
-                    const inputValue = searchInput.value;
-
-                    if (inputValue.trim() === "") {
-                        // 입력 값이 없으면 아무 작업도 하지 않도록
-                        event.preventDefault();
-                        // 40번을 호출해서 문제!!!
-                        return alert("영화 제목을 입력해주세요!");
-                    }
-                    const filteredMovies = movieTitles.filter((title, index) => {
-                        // 입력한 값이 없는데 왜 true지
-                        // 빈 문자열이 다른 문자열에 포함되는지 확인하면 항상 true가 반환됩니다.
-                        // console.log(title.includes(inputValue));
-                        return title.includes(inputValue);
-                    });
-
-                    // 모든 영화 카드 숨기기
-                    allMovieCard.forEach((card) => {
-                        card.parentElement.style.display = "none";
-                    });
-
-                    // 필터링된 영화 카드만 보여주기
-                    filteredMovies.forEach((title) => {
-                        const index = movieTitles.indexOf(title);
-                        allMovieCard[index].parentElement.style.display = "block";
-                    });
-
-                    event.preventDefault();
-                });
+                // releaseDate[index + (page - 1) * 20].innerHTML = `${releaseData} <span>개봉</span>`;
             });
         })
         .catch((err) => console.error(err));
 }
 
+const searchForm = document.querySelector(".search_bar");
+searchForm.addEventListener("submit", (event) => {
+    const searchInput = searchForm.querySelector("input"); // <input> 요소 선택
+    const inputValue = searchInput.value;
+
+    if (inputValue.trim() === "") {
+        // 입력 값이 없으면 아무 작업도 하지 않도록
+        event.preventDefault();
+        // 40번을 호출해서 문제!!!
+        return alert("영화 제목을 입력해주세요!");
+    }
+
+    const filteredMovies = movieTitles.filter((title, index) => {
+        // 입력한 값이 없는데 true 가 나오는 이유
+        // 빈 문자열이 다른 문자열에 포함되는지 확인하면 항상 true가 반환됨
+        // console.log(title.includes(inputValue));
+        if (title.includes(inputValue) === false) {
+            console.log("일치하는 결과가 없습니다.");
+        } else {
+            return title.includes(inputValue);
+        }
+    });
+
+    // 모든 영화 카드 숨기기
+    allMovieCard.forEach((card) => {
+        card.parentElement.style.display = "none";
+    });
+
+    // 필터링된 영화 카드만 보여주기
+    filteredMovies.forEach((title) => {
+        const index = movieTitles.indexOf(title);
+        allMovieCard[index].parentElement.style.display = "block";
+    });
+
+    event.preventDefault();
+});
 allMovieCard.forEach((movieCard) => {
     movieCard.addEventListener("click", function () {
         // 클릭한 영화 카드의 ID 가져오기

@@ -37,11 +37,11 @@ window.addEventListener("scroll", function () {
     const navItems = document.querySelectorAll(".nav_li a");
 
     const sections = [document.getElementById("search_bar"), document.getElementById("recommended_movies")];
-
+    // const headerHeight =;
     sections.forEach((section, index) => {
         if (windowTop >= section.offsetTop && windowTop < (sections[index + 1]?.offsetTop || Infinity)) {
             navItems.forEach((item) => item.classList.remove("on"));
-
+            // console.log(navItems[index]);
             navItems[index + 1].classList.add("on");
         } else if (windowTop < sections[0].offsetTop) {
             navItems.forEach((item) => item.classList.remove("on"));

@@ -3,7 +3,7 @@ const apiKey = "c9edad1341c962f8480ff448a9795aef";
 const totalPages = 2;
 
 const allMovies = document.querySelector(".all_movies");
-const allMovieCard = allMovies.querySelectorAll(".movie_card");
+const allMovieCard = document.querySelectorAll(".movie_card");
 const allMovieCardImg = allMovies.querySelectorAll(".movie_card .img_wrap");
 // 영화 제목 배열
 // 전역변수로 선언해야 함
@@ -26,7 +26,6 @@ for (let page = 1; page <= totalPages; page++) {
     const allMovieInfo = allMovies.querySelectorAll(".movie_info");
     const allMovieTitles = allMovies.querySelectorAll(".movie_name");
     const allMovieTitlesOrigin = allMovies.querySelectorAll(".movie_name_origin");
-    const allMoviePosterImg = allMovies.querySelectorAll(".poster_img");
     const releaseDate = allMovies.querySelectorAll(".release_date");
     fetch(url, options)
         .then((response) => response.json())
@@ -35,7 +34,7 @@ for (let page = 1; page <= totalPages; page++) {
             // 여기에서 데이터를 처리하세요.
             // TMDB API에서 한 번에 반환되는 결과 수는 기본적으로 20개로 제한
             // 80개의 데이터를 가져오기 위해서는 페이지마다 20개씩 요청을 반복해야 합니다
-            data.results.forEach((movie, index, poster) => {
+            data.results.forEach((movie, index) => {
                 // 영화 제목
                 const movieTitle = movie.title;
                 movieTitles.push(movie.title);

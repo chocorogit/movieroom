@@ -14,7 +14,7 @@ function addRandomElements() {
                 randomIndex = Math.floor(Math.random() * liElements.length);
             } while (selectedIndices.includes(randomIndex));
 
-            console.log(randomIndex);
+            // console.log(randomIndex);
             const randomElement = liElements[randomIndex].cloneNode(true);
             recoMoviesUl.appendChild(randomElement);
 

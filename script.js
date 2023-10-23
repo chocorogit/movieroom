@@ -1,20 +1,10 @@
 // 발급받은 TMDB API key
 const apiKey = "c9edad1341c962f8480ff448a9795aef";
 const totalPages = 2;
-// 일반적으로 설정값들만 따로 모아 하나의 객체 변수에 저장하여 많이 사용
-const options = {
-    method: "GET",
-};
 
 const allMovies = document.querySelector(".all_movies");
 const allMovieCard = allMovies.querySelectorAll(".movie_card");
 const allMovieCardImg = allMovies.querySelectorAll(".movie_card .img_wrap");
-const allMovieInfo = allMovies.querySelectorAll(".movie_info");
-const allMovieTitles = allMovies.querySelectorAll(".movie_name");
-const allMovieTitlesOrigin = allMovies.querySelectorAll(".movie_name_origin");
-const allMoviePosterImg = allMovies.querySelectorAll(".poster_img");
-const releaseDate = allMovies.querySelectorAll(".release_date");
-
 // 영화 제목 배열
 // 전역변수로 선언해야 함
 const movieTitles = [];
@@ -28,6 +18,16 @@ const movieTitles = [];
 for (let page = 1; page <= totalPages; page++) {
     const url = `https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=${page}&api_key=${apiKey}`;
 
+    // 일반적으로 설정값들만 따로 모아 하나의 객체 변수에 저장하여 많이 사용
+    const options = {
+        method: "GET",
+    };
+
+    const allMovieInfo = allMovies.querySelectorAll(".movie_info");
+    const allMovieTitles = allMovies.querySelectorAll(".movie_name");
+    const allMovieTitlesOrigin = allMovies.querySelectorAll(".movie_name_origin");
+    const allMoviePosterImg = allMovies.querySelectorAll(".poster_img");
+    const releaseDate = allMovies.querySelectorAll(".release_date");
     fetch(url, options)
         .then((response) => response.json())
         // 'data'는 JavaScript 객체로 파싱된 JSON 데이터
@@ -49,8 +49,6 @@ for (let page = 1; page <= totalPages; page++) {
                 const overview = movie.overview;
                 // 평점
                 const average = movie.vote_average;
-                // 개봉일
-                // const releaseData = movie.release_date;
                 // id
                 const movieId = movie.id;
                 allMovieCard[index + (page - 1) * 20].setAttribute("id", movieId);
@@ -67,8 +65,6 @@ for (let page = 1; page <= totalPages; page++) {
                 posterElement.src = posterUrl;
                 overviewElement.innerHTML = movie.overview ? `${overview}` : ` 내용 요약이 없습니다.`;
 
-                // console.log(releaseDate);
-
                 // 페이지별로 인덱스 0부터 시작 수정
                 allMovieTitles[index + (page - 1) * 20].innerHTML = movieTitle;
                 allMovieTitlesOrigin[index + (page - 1) * 20].innerHTML = movie.original_title;
@@ -79,48 +75,14 @@ for (let page = 1; page <= totalPages; page++) {
                     averageElement,
                     allMovieTitles[index + (page - 1) * 20]
                 );
-                // releaseDate[index + (page - 1) * 20].innerHTML = `${releaseData} <span>개봉</span>`;
             });
+            if (page === totalPages) {
+                addRandomElements();
+            }
         })
         .catch((err) => console.error(err));
 }
 
-const searchForm = document.querySelector(".search_bar");
-searchForm.addEventListener("submit", (event) => {
-    const searchInput = searchForm.querySelector("input"); // <input> 요소 선택
-    const inputValue = searchInput.value;
-
-    if (inputValue.trim() === "") {
-        // 입력 값이 없으면 아무 작업도 하지 않도록
-        event.preventDefault();
-        // 40번을 호출해서 문제!!!
-        return alert("영화 제목을 입력해주세요!");
-    }
-
-    const filteredMovies = movieTitles.filter((title, index) => {
-        // 입력한 값이 없는데 true 가 나오는 이유
-        // 빈 문자열이 다른 문자열에 포함되는지 확인하면 항상 true가 반환됨
-        // console.log(title.includes(inputValue));
-        if (title.includes(inputValue) === false) {
-            console.log("일치하는 결과가 없습니다.");
-        } else {
-            return title.includes(inputValue);
-        }
-    });
-
-    // 모든 영화 카드 숨기기
-    allMovieCard.forEach((card) => {
-        card.parentElement.style.display = "none";
-    });
-
-    // 필터링된 영화 카드만 보여주기
-    filteredMovies.forEach((title) => {
-        const index = movieTitles.indexOf(title);
-        allMovieCard[index].parentElement.style.display = "block";
-    });
-
-    event.preventDefault();
-});
 allMovieCard.forEach((movieCard) => {
     movieCard.addEventListener("click", function () {
         // 클릭한 영화 카드의 ID 가져오기

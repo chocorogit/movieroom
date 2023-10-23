@@ -380,6 +380,7 @@ main {
     justify-content: center;
     gap: 20px;
     width: 100%;
+    min-height: 500px;
     padding: 0;
     margin-left: auto;
     margin-right: auto;
@@ -398,7 +399,8 @@ main {
 }
 
 .recommended_movies {
-    width: 1020px;
+    width: 100%;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 100px 0;
 }
@@ -410,8 +412,9 @@ main {
 .recommended_movies > ul {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
-    width: 1020px;
+    width: 100%;
     padding: 0;
     margin-left: auto;
     margin-right: auto;
@@ -419,8 +422,7 @@ main {
 
 .recommended_movies > ul > li {
     position: relative;
-    width: 240px;
-    /* height: 342px; */
+    flex-basis: 240px;
 }
 
 .recommended_movies > ul > li .movie_card {
